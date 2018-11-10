@@ -1,0 +1,14 @@
+<launch>
+	<!-- vim: set ft=xml noet : -->
+	<!-- example launch script for ArduPilotMega based FCU's -->
+
+  <!-- Launch MAVROS and connect to the Pixhawk device-->
+  <include file="$(find mavros)/launch/apm.launch">
+    <arg name="fcu_url" value="/dev/ttyUSB0:921600" />
+  </include>
+
+  <!-- Run the NODE (where our autonomous instructions are) -->
+  <node name="parallax_node" pkg="parallax" type="parallax_node" args="messages /zed/left/image_rect_color 5 /AUQI">
+  </node>
+
+</launch>
